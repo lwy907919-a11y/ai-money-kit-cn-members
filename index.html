@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 赚钱工具包 - 会员中心 | 5 大 AI 工具直接用</title>
+<meta name="description" content="5 大 AI 工具在线版,输入就能用,3 步跑通第一单。30 天回本承诺,7 天无理由退款。">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.6; color: #1a1a1a; background: #fafafa; }
+.topbar { background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%); color: white; padding: 14px 20px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.topbar-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.topbar h1 { font-size: 1.1rem; font-weight: 700; }
+.topbar .refund-tag { background: #10b981; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+.hero { background: linear-gradient(135deg, #fff5f8 0%, #ffe0e8 100%); border: 2px solid #ee0979; border-radius: 16px; padding: 24px; margin-bottom: 20px; }
+.hero h2 { font-size: 1.6rem; margin-bottom: 8px; color: #1a1a1a; }
+.hero p { color: #666; margin-bottom: 12px; }
+.hero .steps { background: white; border-radius: 10px; padding: 14px 18px; font-size: 0.95rem; color: #1a1a1a; }
+.hero .steps strong { color: #ee0979; }
+
+.section { background: white; border-radius: 12px; padding: 24px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.section h2 { font-size: 1.3rem; margin-bottom: 12px; }
+
+.systems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.system-card { background: linear-gradient(135deg, #f9fafb 0%, #fff 100%); border: 2px solid #e5e7eb; border-radius: 10px; padding: 18px; cursor: pointer; transition: all 0.2s; }
+.system-card:hover { background: #fef3c7; border-color: #f59e0b; transform: translateY(-2px); }
+.system-card .emoji { font-size: 2.2rem; display: block; margin-bottom: 6px; }
+.system-card h3 { font-size: 1.05rem; margin-bottom: 4px; color: #1a1a1a; }
+.system-card .desc { color: #666; font-size: 0.85rem; margin-bottom: 8px; }
+.system-card .price { color: #ee0979; font-weight: 700; font-size: 0.95rem; }
+.system-card .used-badge { display: inline-block; background: #10b981; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; margin-left: 6px; }
+
+.input-group { margin-bottom: 12px; }
+.input-group label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 0.9rem; color: #1a1a1a; }
+.input-group input, .input-group textarea, .input-group select { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; font-family: inherit; box-sizing: border-box; }
+.input-group textarea { min-height: 70px; resize: vertical; }
+.btn { padding: 12px 24px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.95rem; transition: all 0.2s; }
+.btn-primary { background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%); color: white; }
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(238,9,121,0.3); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.output { background: #1a1a1a; color: #10b981; padding: 16px; border-radius: 8px; font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; margin: 16px 0; max-height: 400px; overflow-y: auto; line-height: 1.5; }
+
+.tutorial { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 1px solid #f59e0b; border-radius: 10px; padding: 16px; margin-bottom: 12px; }
+.tutorial h3 { color: #92400e; margin-bottom: 6px; font-size: 1.05rem; }
+.tutorial p { color: #78350f; font-size: 0.9rem; line-height: 1.7; }
+.tutorial .time { display: inline-block; background: #f59e0b; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; margin-right: 6px; font-weight: 600; }
+
+.faq-item { background: #f9fafb; border-radius: 8px; padding: 14px 16px; margin-bottom: 8px; cursor: pointer; }
+.faq-item h4 { font-size: 0.95rem; margin-bottom: 4px; }
+.faq-item .answer { display: none; color: #555; font-size: 0.9rem; margin-top: 8px; line-height: 1.6; }
+.faq-item.open .answer { display: block; }
+
+.refund-box { background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border: 2px solid #ef4444; border-radius: 12px; padding: 20px; text-align: center; margin: 16px 0; }
+.refund-box h3 { color: #991b1b; margin-bottom: 8px; font-size: 1.1rem; }
+.refund-box p { color: #7f1d1d; margin-bottom: 12px; font-size: 0.95rem; }
+.refund-box a { display: inline-block; background: #ef4444; color: white; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; }
+
+.support-box { background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 12px; padding: 16px; margin: 16px 0; text-align: center; }
+.support-box strong { color: #1e3a8a; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <h1>🚀 AI 赚钱工具包 · 5 大 AI 工具</h1>
+    <span class="refund-tag">💰 7 天无理由退</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="hero">
+    <h2>👋 欢迎!5 大 AI 工具已为你开放</h2>
+    <p>不需要等任何人,点开就用。</p>
+    <div class="steps">
+      <strong>🎯 3 步跑通第一单:</strong><br>
+      ① 点下面任一工具 → 填表 → 出结果(2 分钟)<br>
+      ② 复制结果发朋友圈 / 小红书 / 闲鱼(2 分钟)<br>
+      ③ 收到咨询 → 用现成话术回应 → 收 ¥29-499(1-3 天)
+    </div>
+  </div>
+
+  <!-- 5 大工具 -->
+  <div class="section">
+    <h2>🛠️ 5 大 AI 工具(点开就用)</h2>
+    <p style="color:#666; font-size:0.9rem; margin-bottom:14px;">点任意一个 → 填表 → 出结果 → 复制发客户</p>
+    <div class="systems-grid">
+      <div class="system-card" onclick="openTool('sys1')">
+        <span class="emoji">🤖</span>
+        <h3>AI 智能体搭建</h3>
+        <p class="desc">输入行业 + 客户 → 生成完整 prompt + 工作流 + 定价</p>
+        <span class="price">客单价 ¥500-2000/单</span>
+      </div>
+      <div class="system-card" onclick="openTool('sys2')">
+        <span class="emoji">👤</span>
+        <h3>AI 数字人代运营</h3>
+        <p class="desc">输入产品 → 生成脚本模板 + 平台方案 + 收费</p>
+        <span class="price">¥1000-3000/月/客户</span>
+      </div>
+      <div class="system-card" onclick="openTool('sys3')">
+        <span class="emoji">✍️</span>
+        <h3>AI 公众号代写</h3>
+        <p class="desc">输入主题 → 生成标题 3 选 1 + 开头 + 大纲</p>
+        <span class="price">¥500-2000/篇</span>
+      </div>
+      <div class="system-card" onclick="openTool('sys4')">
+        <span class="emoji">📄</span>
+        <h3>AI 简历优化</h3>
+        <p class="desc">粘贴简历 → 立即评分 + 改写 + 优化建议</p>
+        <span class="price">¥50-200/份(闲鱼起单最快)</span>
+      </div>
+      <div class="system-card" onclick="openTool('sys5')">
+        <span class="emoji">💎</span>
+        <h3>AI 提示词销售</h3>
+        <p class="desc">输入用途 → 生成 3 套可销售包 + 定价 + 闲鱼挂车文案</p>
+        <span class="price">¥9.9-99/份(纯被动收入)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 工具输出区 -->
+  <div class="section" id="toolOutput" style="display:none;">
+    <h2 id="toolTitle">工具</h2>
+    <p id="toolDesc" style="color:#666;"></p>
+    <div id="toolForm"></div>
+    <div id="toolResult" class="output" style="display:none;"></div>
+  </div>
+
+  <!-- 教程 -->
+  <div class="section">
+    <h2>📖 3 步跑通第一单(复制就用)</h2>
+    <div class="tutorial">
+      <h3>Step 1: 用工具,拿到 1 个真实结果</h3>
+      <p>点上面任一工具 → 填 2-3 个空 → 点"生成" → 看到一段话/方案</p>
+      <p style="margin-top:6px;"><span class="time">5 分钟</span> 不需要懂技术,不用下软件</p>
+    </div>
+    <div class="tutorial">
+      <h3>Step 2: 把结果截图 + 写 1 段话,发出去</h3>
+      <p>模板(直接抄):</p>
+      <p>"用 AI 帮 [场景] 做了 [具体事],效果 [具体数据]。想要的私我,前 3 名 5 折"</p>
+      <p style="margin-top:6px;"><span class="time">5 分钟</span> 发到 5 个渠道:朋友圈 / 小红书 / 闲鱼 / 1 个微信群 / 1 个朋友私聊</p>
+    </div>
+    <div class="tutorial">
+      <h3>Step 3: 用现成话术接单,复制走收钱</h3>
+      <p>收到咨询时,复制下面任一话术回复:</p>
+      <p style="margin-top:6px;">
+        "可以的,我们的 [服务] 包含 [具体内容],标准价 ¥XXX,前 3 名优惠价 ¥XX。你看今天/明天能定吗?"
+      </p>
+      <p style="margin-top:6px;"><span class="time">1-3 天</span> 收到钱 → 复制工具结果 → 改成客户要的版本 → 发给客户 → 完成</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section">
+    <h2>❓ 常见问题(点开看)</h2>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <h4>我不会用工具怎么办?</h4>
+      <div class="answer">每个工具只要填 2-3 个空,点"生成"就出结果。看不懂就多试几次,每次出来的内容不一样,选你能用的那条。不需要懂 AI,不需要懂编程。</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <h4>我不知道该怎么定价?</h4>
+      <div class="answer">工具输出里有"定价建议",直接抄。<br>起步价建议:第 1-3 单打 5 折,跑通案例;第 4-10 单行业平均 70-80%;10 单后行业平均 100-150%。<br>客单价参考:简历优化 ¥50-200,公众号 ¥500-2000,智能体 ¥500-2000,数字人月费 ¥1000-3000。</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <h4>我没客户怎么办?</h4>
+      <div class="answer">3 个最易起单的渠道(按难度排序):<br>1. <strong>闲鱼</strong>:挂"AI 简历优化 ¥29 起",闲鱼自带流量,当天可出单。<br>2. <strong>朋友圈</strong>:每天发 1 条,3 条生活 + 1 条工作,持续 1 周。<br>3. <strong>小红书</strong>:发"AI 工具演示"笔记,评论区钩子加微信。<br><strong>不要投广告</strong>,7 天内跑通 1 单。</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <h4>客户要发票/合同怎么办?</h4>
+      <div class="answer">微小额(¥200 以下):微信/支付宝转账即可,不需要发票。<br>中额(¥200-2000):用"个人合作协议",模板自己写,关键词:服务内容/交付时间/价格/双方签字。<br>大额(¥2000+):客户要发票的话,让他们走"代账公司"开票(1% 手续费,你承担)。</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <h4>7 天跑不通能退款吗?</h4>
+      <div class="answer"><strong>能。全额退, 不问原因。</strong><br>点下面"申请退款"按钮 → 填订单号 → 1-3 个工作日原路退回。我们相信 99% 的人能跑通,但万一跑不通,你不亏。</div>
+    </div>
+  </div>
+
+  <!-- 退款 -->
+  <div class="refund-box">
+    <h3>💰 7 天无理由退款</h3>
+    <p>跑不通 1 单全额退 · 不问原因 · 1-3 个工作日原路退回</p>
+    <a href="https://lwy907919-a11y.github.io/refund-cn/" target="_blank">📋 申请退款</a>
+  </div>
+
+  <div class="support-box">
+    <strong>💬 30 天答疑 · 加微信 hzylw123 · 看到必回</strong><br>
+    <small style="color:#1e3a8a;">遇到问题随时问。90% 问题看上面 FAQ 已解决,别憋着。</small>
+  </div>
+
+  <div style="text-align:center; color:#999; font-size:0.85rem; padding:24px 0;">
+    <p>有问题? 看上面 FAQ · 90% 问题都有答案</p>
+    <p style="margin-top:6px;">© 2026 AI 赚钱工具包 · 一次性收费,无月费</p>
+    <p style="margin-top:12px;"><a href="https://lwy907919-a11y.github.io/ai-money-kit-cn/" style="color:#ee0979;">← 返回产品主页</a></p>
+  </div>
+</div>
+
+<script>
+// 5 大工具(简化版,直接给结果,无需后端)
+// 用户填入 → 立即生成可直接用的 prompt
+
+const TOOLS = {
+  sys1: {
+    title: '🤖 AI 智能体搭建工具',
+    desc: '输入行业 + 客户 → 生成完整方案(prompt + 工作流 + 定价)',
+    form: `
+      <div class="input-group"><label>行业(例:医美、餐饮、电商、教育)</label><input id="t1_industry" placeholder="医美"></div>
+      <div class="input-group"><label>客户类型(B 端医美机构 / C 端学生家长)</label><input id="t1_customer" placeholder="B 端医美机构"></div>
+      <div class="input-group"><label>智能体核心用途</label><input id="t1_purpose" placeholder="客服自动回答 + 销售线索筛选"></div>
+      <button class="btn btn-primary" onclick="runTool('sys1')">🚀 生成方案</button>
+    `,
+    generate: (i) => `🤖 AI 智能体搭建方案(给: ${i.industry} · ${i.customer})
+
+【客户类型】${i.customer} · 行业:${i.industry}
+【核心用途】${i.purpose}
+
+═══════════════════════════════
+一、智能体定位(3 选 1,推荐方案 A)
+═══════════════════════════════
+
+✅ 方案 A:客服型(推荐,90% 商家首选)
+功能:自动回答客户咨询、预约提醒、售后服务
+客单价:¥500-1500/单
+搭建时间:3-5 小时
+工具:Coze(免费)+ 微信客服
+
+═══════════════════════════════
+二、核心功能清单(5-7 项)
+═══════════════════════════════
+
+1. ✅ 自动回答:覆盖 80% 常见问题(产品价格/服务/地址)
+2. ✅ 资料查询:客户上传图片,AI 自动识别
+3. ✅ 智能推荐:根据客户需求推荐对应服务
+4. ✅ 预约管理:自动同步预约时间
+5. ✅ 转人工:复杂问题自动 @ 人工客服
+6. ✅ 客户标签:自动分类(高意向/低意向/已成交)
+7. ✅ 数据分析:每周自动出客户咨询报告
+
+═══════════════════════════════
+三、训练 Prompt 模板(10 条)
+═══════════════════════════════
+
+1. 你是 [${i.industry}] 店的 AI 客服,主要回答 [咨询/预约/售后] 三类问题。
+2. 当客户问 [价格] 时,先说价格,再问 "你看什么时候方便来呢?"
+3. 当客户问 [地址] 时,直接给地址 + 一句话交通指引。
+4. 当客户说 [考虑一下] 时,问 "主要考虑哪方面呢?我帮你解答。"
+5. 当客户说 [太贵了] 时,说 "我们有 9.9 体验,要不先试试?"
+6. 当客户 [骂人/发火] 时,先道歉,再 "我帮您转接经理。"
+7. 当客户问 [效果] 时,发 1-2 个客户案例截图。
+8. 当客户问 [有没有副作用] 时,如实回答 + 解释原理。
+9. 当客户问 [什么时候开业] 时,给具体时间,再问 "你看预约哪天?"
+10. 当客户 [沉默 5 分钟] 时,自动发 "还有什么想问的吗?"
+
+═══════════════════════════════
+四、部署方案
+═══════════════════════════════
+
+推荐工具:Coze(字节跳动,免费)
+- 网址:coze.cn
+- 部署时间:30 分钟
+- 客户成本:0 元(免费版够用)
+
+═══════════════════════════════
+五、客户验收清单
+═══════════════════════════════
+
+1. ✅ 智能体能否回答 10 个常见问题?
+2. ✅ 转人工是否顺畅?
+3. ✅ 客户信息是否自动入库?
+4. ✅ 客户标签是否正确分类?
+5. ✅ 是否有数据看板?
+6. ✅ 是否能识别图片(产品/收据)?
+7. ✅ 是否能发语音?
+8. ✅ 群聊是否支持?
+9. ✅ 是否有"自动加微"功能?
+10. ✅ 数据是否加密?
+
+═══════════════════════════════
+六、报价方案
+═══════════════════════════════
+
+- 基础版(¥500):1 行业 + 1 客服功能
+- 进阶版(¥1000):3 行业 + 客服 + 推荐
+- 旗舰版(¥2000):全功能 + 1 年维护
+
+═══════════════════════════════
+
+🎁 立即行动:
+1. 复制本文档 → 发给客户
+2. 客户确认 → 1 小时内开始搭建
+3. 3 天交付 → 收钱
+`
+  },
+  sys2: {
+    title: '👤 AI 数字人代运营工具',
+    desc: '输入产品 → 生成脚本模板 + 平台方案 + 收费',
+    form: `
+      <div class="input-group"><label>行业</label><input id="t2_industry" placeholder="美妆"></div>
+      <div class="input-group"><label>产品/服务</label><input id="t2_product" placeholder="抗衰精华"></div>
+      <div class="input-group"><label>主要平台</label><input id="t2_platform" placeholder="抖音"></div>
+      <button class="btn btn-primary" onclick="runTool('sys2')">🚀 生成方案</button>
+    `,
+    generate: (i) => `👤 AI 数字人代运营方案(给: ${i.industry} · ${i.platform})
+
+【产品】${i.product} · 行业:${i.industry}
+【主要平台】${i.platform}
+
+═══════════════════════════════
+一、数字人形象选择
+═══════════════════════════════
+
+推荐:真人克隆(30 秒视频样本)
+工具:必火 AI / HeyGen / D-ID(选 1 个)
+价格:¥0-50/月
+
+行业调性: ${i.industry} 应该 [专业/亲和/年轻] 风格
+
+═══════════════════════════════
+二、30 天内容日历
+═══════════════════════════════
+
+第 1 周(品牌建立):
+- Day 1:产品介绍(50 秒)
+- Day 3:用户痛点(30 秒)
+- Day 5:产品对比(45 秒)
+- Day 7:首单优惠(30 秒)
+
+第 2 周(卖点深入):
+- Day 9:成分解析(60 秒)
+- Day 11:使用教程(45 秒)
+- Day 13:客户见证(30 秒)
+- Day 14:直播预告(20 秒)
+
+第 3-4 周(转化为主):
+- 每 2 天 1 条促销 + 1 条使用场景
+- 每周 1 场直播(2 小时)
+
+═══════════════════════════════
+三、直播话术(7 天循环)
+═══════════════════════════════
+
+【开场 5 分钟】
+"欢迎来到 [品牌] 直播间!我是 [数字人名字],今天给大家带来 [产品] 的大促,前 100 名有 5 折优惠..."
+
+【中场互动 3 招】
+1. 抽奖:"扣 1 抽奖,送 [小样 3 份]"
+2. 限时:"这个价格只剩 5 分钟,想要的扣 [想要]"
+3. 库存:"库存还有 23 件,卖完就没了"
+
+【收尾逼单 3 招】
+1. 算账:"一杯奶茶钱,30 天用完"
+2. 保障:"7 天无理由退,放心下单"
+3. 紧迫:"今晚 12 点恢复原价"
+
+═══════════════════════════════
+四、工具栈(成本 ¥0-100/月)
+═══════════════════════════════
+
+- 形象克隆:必火 AI / HeyGen / D-ID(免费版)
+- 声音克隆:ElevenLabs / 剪映 AI
+- 视频生成:可灵 / Runway / Pika
+- 直播:OBS + 数字人插件
+
+═══════════════════════════════
+五、报价方案
+═══════════════════════════════
+
+- 基础版 ¥1000/月:5 短视频
+- 进阶版 ¥3000/月:15 短视频 + 1 场直播
+- 旗舰版 ¥8000/月:无限内容 + 多账号
+
+═══════════════════════════════
+
+🎁 立即行动:
+1. 选 1 个工具(必火 AI 推荐)开始用
+2. 给客户 1 个 30 秒样片
+3. 收钱 1000 元/月
+`
+  },
+  sys3: {
+    title: '✍️ AI 公众号代写工具',
+    desc: '输入主题 + 风格 → 生成标题 3 选 1 + 开头 + 大纲',
+    form: `
+      <div class="input-group"><label>主题</label><input id="t3_topic" placeholder="副业赚钱"></div>
+      <div class="input-group"><label>目标读者</label><input id="t3_audience" placeholder="大学生"></div>
+      <div class="input-group"><label>风格</label>
+        <select id="t3_style">
+          <option>干货硬核</option><option>故事软文</option><option>清单体</option>
+          <option>争议观点</option><option>案例拆解</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" onclick="runTool('sys3')">🚀 生成文章</button>
+    `,
+    generate: (i) => `✍️ AI 公众号文章(主题: ${i.topic} · 读者: ${i.audience} · 风格: ${i.style})
+
+═══════════════════════════════
+标题 3 选 1
+═══════════════════════════════
+
+① 数字型:"[${i.audience}] 必看:5 个 [${i.topic}] 真相(90% 人不知道)"
+② 痛点型:"做了 3 年 [${i.topic}],我发现 99% 的人都搞错了"
+③ 争议型:"为什么我说 [${i.topic}] 是 [${i.audience}] 最该做的事"
+
+═══════════════════════════════
+开头(150 字)
+═══════════════════════════════
+
+上周我表弟问我:[${i.audience}],现在做 [${i.topic] 还能赚钱吗?
+
+我反问他:你知道 [${i.audience}] 这个群体,最容易被什么收割吗?
+
+他说:被那些 [虚假宣传 / 焦虑营销]?
+
+我说:错。是"看起来很对、其实没用的道理"。
+
+今天我把这 3 年的 [${i.topic}] 实战经验,全部告诉你。
+
+═══════════════════════════════
+文章大纲(5 段)
+═══════════════════════════════
+
+一、为什么 [${i.audience}] 特别适合做 [${i.topic}](讲 3 个具体原因)
+
+二、3 个真实案例(讲他们怎么从 0 做到月入 X 万)
+
+三、99% 的人会踩的 5 个坑(讲具体的坑,不是泛泛而谈)
+
+四、30 天落地计划(给具体 Day 1-30 每天做什么)
+
+五、立即开始(讲具体第一步,让读者今晚就动手)
+
+═══════════════════════════════
+金句(放文章里,提高分享率)
+═══════════════════════════════
+
+1. "所有的"等等再说",都是"不要了"的伪装。"
+2. "[${i.audience}] 最值钱的不是时间,是注意力。"
+3. "不要等准备好了再开始,要开始了才会准备好。"
+
+═══════════════════════════════
+收尾(转化)
+═══════════════════════════════
+
+如果你也想用 [${i.topic}] 副业赚钱,我整理了一份《[${i.audience}] AI 副业 30 天启动包》:
+
+- 5 个真实可落地的系统
+- 50+ 提示词模板
+- 30 天答疑
+
+限 100 份,¥29 起。👉 [你的链接]
+
+═══════════════════════════════
+
+🎁 客户开发:
+- 报价:¥500-2000/篇(看字数和深度)
+- 渠道:主动找 100 个公众号主,发样稿
+- 转化:10% 概率,每月 10 单 = ¥5000-20000
+`
+  },
+  sys4: {
+    title: '📄 AI 简历优化工具',
+    desc: '粘贴简历 → 立即评分 + 改写 + 优化建议',
+    form: `
+      <div class="input-group"><label>目标岗位</label><input id="t4_target" placeholder="3-5 年 Java 后端"></div>
+      <div class="input-group"><label>求职者背景</label><textarea id="t4_background" placeholder="3 年 Java 后端,在小公司,用过 Spring Cloud/MySQL/Redis"></textarea></div>
+      <button class="btn btn-primary" onclick="runTool('sys4')">🚀 生成简历方案</button>
+    `,
+    generate: (i) => `📄 AI 简历优化方案(目标: ${i.target})
+
+【求职者背景】${i.background}
+
+═══════════════════════════════
+一、ATS 评分(模拟 100 分制)
+═══════════════════════════════
+
+- 关键词匹配:65 分(缺 5-8 个关键技能词)
+- 格式规范:90 分(基本符合 ATS 解析)
+- 内容相关性:70 分(项目经历不够聚焦)
+- 量化成果:55 分(数字太少)
+- 排版清晰度:85 分(基本可读)
+
+综合得分:73 分(勉强通过 ATS,需优化)
+
+═══════════════════════════════
+二、必加的关键词(8 个)
+═══════════════════════════════
+
+1. Spring Cloud Alibaba(具体组件名)
+2. 微服务架构设计经验
+3. MySQL 调优 / 慢 SQL 优化
+4. Redis 缓存设计
+5. 高并发场景(具体到 1w+/s)
+6. 分布式事务(Seata/RocketMQ)
+7. Kubernetes 容器化部署
+8. CI/CD 流程(Jenkins/GitLab)
+
+═══════════════════════════════
+三、项目经历重写(STAR 法)
+═══════════════════════════════
+
+【改前】:"参与了订单系统开发"
+
+【改后】:"负责日均 200w 单订单系统核心模块设计与开发,通过 Redis 多级缓存 + 异步 MQ 削峰,把大促峰值 TPS 从 800 提升到 12000,数据库 QPS 降低 70%。"
+
+【模板】:
+"负责 [系统名] [核心模块] 设计与开发,通过 [技术方案] 实现 [业务指标提升] [数字结果]。"
+
+═══════════════════════════════
+四、简历结构建议
+═══════════════════════════════
+
+1. 顶部 100 字:3 年 Java · 211 本科 · 大厂目标(放显眼)
+2. 项目经历(2-3 个,每个 3-5 句)
+3. 技能清单(分熟练/了解/学习)
+4. 教育背景
+5. 自我评价(50 字内,别写"积极乐观")
+
+═══════════════════════════════
+五、避坑
+═══════════════════════════════
+
+❌ 不要:"熟练使用 Word/Excel"
+✅ 改成:"无相关经验"
+
+❌ 不要:"参与了 XX 系统"
+✅ 改成:"主导 XX 系统架构设计"
+
+❌ 不要:大段文字
+✅ 改成:每段 1-2 行,加粗关键词
+
+═══════════════════════════════
+六、定价方案
+═══════════════════════════════
+
+- 基础版 ¥99:ATS 评分 + 关键词建议
+- 进阶版 ¥199:完整重写 + STAR 改写 + 模拟面试
+- 旗舰版 ¥499:全套 + 1v1 视频辅导 30 分钟
+
+═══════════════════════════════
+
+🎁 闲鱼起单话术:
+"AI 简历优化,3 年经验 ATS 通过率 95%,¥99 起,不满意全额退。"
+
+3-5 单/天 × ¥100 = ¥300-500/天
+`
+  },
+  sys5: {
+    title: '💎 AI 提示词销售工具',
+    desc: '输入用途 → 生成 3 套可销售包 + 定价 + 闲鱼挂车文案',
+    form: `
+      <div class="input-group"><label>你想卖什么提示词包?(主题)</label><input id="t5_topic" placeholder="小红书爆文 / 短视频脚本 / 朋友圈文案"></div>
+      <button class="btn btn-primary" onclick="runTool('sys5')">🚀 生成可销售包</button>
+    `,
+    generate: (i) => `💎 AI 提示词包(主题: ${i.topic})
+
+═══════════════════════════════
+一、3 套可销售包设计
+═══════════════════════════════
+
+【包 1】入门版 ¥9.9
+- 20 个 [${i.topic}] 提示词
+- 1 个使用教程(1 页 PDF)
+- 适用:个人试用、买来玩玩
+
+【包 2】标准版 ¥29.9
+- 50 个 [${i.topic}] 提示词
+- 5 个具体场景模板
+- 1 个 [${i.topic}] 完整 SOP(2 页)
+- 适用:小工作室、自媒体新人
+
+【包 3】旗舰版 ¥99
+- 200 个 [${i.topic}] 提示词
+- 10 个行业细分版本
+- 1 个完整商业方案(10 页)
+- 终身更新
+- 适用:大公司、代理商
+
+═══════════════════════════════
+二、闲鱼挂车文案
+═══════════════════════════════
+
+标题:[${i.topic}] 提示词包 20-200 个模板 小白也能出爆款
+
+主图:9 宫格,1 个价格 + 3 个样例 + 5 个数字
+
+详情:
+"姐妹们!做了 3 年 [${i.topic}],我把所有爆款 prompt 都整理成包了!
+
+✅ 20-200 个 [${i.topic}] 提示词
+✅ 1 个完整 SOP(从 0 到爆款)
+✅ 5 个具体场景(减肥/美妆/职场...)
+
+不用学 AI,直接复制粘贴用,3 分钟出 1 条爆款。
+
+我上个月卖 800 份,0 退款,小红书 4 万粉。
+
+¥9.9 入门,¥29.9 标准,¥99 旗舰。自取,自动发货。"
+
+═══════════════════════════════
+三、选品方法论(什么好卖)
+═══════════════════════════════
+
+✅ 好卖的方向:
+- 职场(简历/求职/PPT)
+- 自媒体(小红书/抖音/公众号)
+- 宝妈(育儿/辅食/早教)
+- 副业(闲鱼/淘宝/小红书开店)
+- 学生(论文/作业/PPT)
+
+❌ 不好卖:
+- 纯技术(代码/算法)
+- 太小众(冷门领域)
+
+═══════════════════════════════
+四、自动发货脚本
+═══════════════════════════════
+
+工具:闲鱼自带"自动发货"功能
+设置:买家付款 → 自动发网盘链接 + 提取码
+网盘:阿里云盘 / 百度网盘(免费)
+提取码:5 位数字,例如 "88888"
+
+═══════════════════════════════
+五、定价心理学
+═══════════════════════════════
+
+- ¥9.9 入门:钩子产品,30% 客户会升单
+- ¥29.9 标准:主推,50% 转化
+- ¥99 旗舰:高利润,20% 客户
+
+价格阶梯:1:3:10,符合 二八 定律
+
+═══════════════════════════════
+
+🎁 月入估算:
+- 每天 10 份 × ¥29.9 = ¥300/天
+- 每月 300 份 × ¥29.9 = ¥9000/月
+- 复购 30% = ¥2700/月 复购
+
+月入 1.2 万起,纯被动收入
+`
+  }
+};
+
+function openTool(sys) {
+  const t = TOOLS[sys];
+  if (!t) return;
+  document.getElementById('toolTitle').textContent = t.title;
+  document.getElementById('toolDesc').textContent = t.desc;
+  document.getElementById('toolForm').innerHTML = t.form;
+  document.getElementById('toolResult').style.display = 'none';
+  document.getElementById('toolOutput').style.display = 'block';
+  document.getElementById('toolOutput').scrollIntoView({ behavior: 'smooth' });
+}
+
+function runTool(sys) {
+  const t = TOOLS[sys];
+  const inputs = {};
+  document.querySelectorAll('#toolForm input, #toolForm textarea, #toolForm select').forEach(el => {
+    inputs[el.id.replace(/^t\\d_/, '')] = el.value;
+  });
+  if (Object.values(inputs).some(v => !v || !v.trim())) {
+    alert('请填写所有字段');
+    return;
+  }
+  const result = t.generate(inputs);
+  const out = document.getElementById('toolResult');
+  out.textContent = result;
+  out.style.display = 'block';
+  out.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
